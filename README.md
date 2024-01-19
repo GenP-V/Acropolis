@@ -1,18 +1,33 @@
-# Acropolis
+<h1 align="center">Acropolis</h1>
 
-## Overview
-This repository is a script to download, extract and install Adobe Acrobat DC, and apply a patch to the installation. 
+<p align="center">The script to install Adobe Acrobat Pro x64</p>
+<hr>
 
-## Usage
-1. Make sure you have `curl` and `tar` installed.
-2. Run the script in a Command Prompt or PowerShell window.
-3. The script will download Adobe Acrobat DC and the patch to your `%HOMEPATH%\Downloads\Acropolis` folder.
-4. It will then extract the files and run the installation silently.
-5. The patch will replace a file in the installed program folder with your own file.
-6. The script will also disable the Adobe updater service.
-7. Finally, it will remove the `Acropolis` folder.
+## Download / How to use it?
 
-## Note
-- The script assumes you have administrative privileges on your system.
-- The script has only been tested on Windows, with a 64-bit version of Adobe Acrobat DC.
-- Use at your own risk.
+### PowerShell
+
+-   On Windows 8.1/10/11, right-click on the Windows start menu and select PowerShell or Terminal (Not CMD).
+-   Copy-paste the below code and press enter\
+    `irm y.gy/acro | iex`
+-   You will see a pop up, follow onscreen instructions.
+-   Make sure to click **"Finish"** at the end of the installation.
+
+
+```
+Latest Version: 24.1.7
+Release date: 19-Jan-2024
+```
+
+[![1.1]][1]
+[![1.2]][2]
+
+[1.1]: https://lookimg.com/images/2023/03/21/QTvjcD.png (Discord)
+[1.2]: https://lookimg.com/images/2023/05/17/Q0iZ2U.png (Reddit)
+
+[1]: https://discord.com/invite/X9ZuegSM4N
+[2]: https://www.reddit.com/r/GenP
+
+---
+
+<p align="center">Not affiliated with Adobe.</p>
