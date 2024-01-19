@@ -1,7 +1,7 @@
 # Guide available at https://www.reddit.com/r/GenP/
 
 $ErrorActionPreference = "Stop"
-# Enable TLSv1.2 for compatibility with older clients
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
 $DownloadURL = 'https://raw.githubusercontent.com/GenP-V/Acropolis/main/Acropolis.cmd'
