@@ -1,4 +1,4 @@
-@set ver=24.1.6
+@set ver=24.1.7
 @echo off
 
 title  Acropolis V%ver%
@@ -50,10 +50,6 @@ echo.
 echo Downloading Adobe Acrobat DC...
 echo.
 
-rem Close all Adobe processes and services
-powershell -Command "Get-Service -DisplayName Adobe* | Stop-Service -Force -Confirm:$false; $Processes = Get-Process * | Where-Object { $_.CompanyName -match 'Adobe' -or $_.Path -match 'Adobe' }; Foreach ($Process in $Processes) { Stop-Process $Process -Force -ErrorAction SilentlyContinue }"
-echo Adobe processes and services closed.
-
 rem Download the standalone Acrobat version needed
 curl --output "%TEMP%\Acropolis\Acrobat_DC_Web_x64_WWMUI.zip" https://trials.adobe.com/AdobeProducts/APRO/Acrobat_HelpX/win32/Acrobat_DC_Web_x64_WWMUI.zip
 
@@ -76,6 +72,10 @@ if not exist "%TEMP%\Acropolis\AcrobatV.zip" (
     pause
     exit /b
 )
+
+rem Close all Adobe processes and services
+powershell -Command "Get-Service -DisplayName Adobe* | Stop-Service -Force -Confirm:$false; $Processes = Get-Process * | Where-Object { $_.CompanyName -match 'Adobe' -or $_.Path -match 'Adobe' }; Foreach ($Process in $Processes) { Stop-Process $Process -Force -ErrorAction SilentlyContinue }"
+
 
 echo.
 rem Extracting Adobe Acrobat DC...
