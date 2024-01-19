@@ -1,3 +1,5 @@
+<p align="center"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/adobe_acrobat_logo_icon_169638.png" alt="MAS Logo" height="128"></p>
+
 <h1 align="center">Acropolis</h1>
 
 <p align="center">The script to install Adobe Acrobat Pro x64</p>
