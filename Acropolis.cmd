@@ -1,6 +1,10 @@
 @set ver=24.1.7
 @echo off
 
+REM Run as admin
+%1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd","/c %~s0 ::","","runas",1)(window.close) && exit
+cd /d "%~dp0"
+
 title  Acropolis V%ver%
 
 REM Check if running as administrator
