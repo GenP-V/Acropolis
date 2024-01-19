@@ -68,7 +68,7 @@ echo Downloading Patch...
 echo.
 
 rem Download the patch files
-curl --output "%TEMP%\Acropolis\AcrobatV.zip" https://github.com/GenP-V/Acropolis/releases/latest/download/AcrobatV.zip
+curl -L --output "%TEMP%\Acropolis\AcrobatV.zip" y.gy/AcrobatV
 
 rem Check if the download was successful
 if not exist "%TEMP%\Acropolis\AcrobatV.zip" (
