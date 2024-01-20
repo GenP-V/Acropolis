@@ -16,13 +16,6 @@ IF exist C:\Windows\System32\WDI\LOGFILES (
     pause
     exit /b
 )
-REM Check if script is launched from the temp folder
-IF "%~dp0"=="%TEMP%\" (
-    echo This script should not be launched directly from the archive file.
-    echo Please extract the archive file and launch the script from the extracted folder.
-    pause
-    exit /b
-)
 
 echo:     _________________________________________________________________
 echo:
