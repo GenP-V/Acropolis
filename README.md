@@ -1,4 +1,4 @@
-<p align="center"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/adobe_acrobat_logo_icon_169638.png" alt="MAS Logo" height="128"></p>
+<p align="center"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/adobe_acrobat_logo_icon_169638.png" alt="Acrobat Logo" height="128"></p>
 
 <h1 align="center">Acropolis</h1>
 
@@ -32,4 +32,4 @@ Release date: 06-Feb-2024
 
 ---
 
-<p align="center">Not affiliated with Adobe.</p>
+<p align="center">Not affiliated with Adobe. For educational purposes only. Use at your own risk.</p>
