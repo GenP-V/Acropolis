@@ -1,5 +1,5 @@
 echo off
-set ver=24.1.9
+set ver=24.1.9 BETA
 
 REM Run as admin
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd","/c %~s0 ::","","runas",1)(window.close) && exit
@@ -31,7 +31,7 @@ echo:         [0] Exit
 echo:     ________________________________________________________________________ 
 echo.
 echo:     Enter a menu option on the keyboard [1,2,3,4,5,0] :
-choice /C:12345678 /N
+choice /C:123450 /N
 set "userChoice=%errorlevel%"
 
 if %userChoice%==1 goto DownloadInstall
@@ -386,7 +386,6 @@ if %restoreChoice%==3 goto ReenableBackgroundServices
 if %restoreChoice%==4 goto MainMenu
 
 goto MainMenu
-
 
 :EndScript
 echo Exiting Acropolis...
