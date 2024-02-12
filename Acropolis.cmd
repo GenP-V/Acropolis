@@ -17,16 +17,17 @@ echo:
 echo:                               Welcome to Acropolis
 echo:     ________________________________________________________________________ 
 echo:
-echo:         [1] Default       ^| Installs Acrobat        ^|      (Recommended)
-echo:                           ^| standalone version      ^|      
+echo:         [1] Default       ^| Installs and patches    ^|       (Standalone)
+echo:                           ^| standalone Acrobat      ^|      
 echo:
-echo:         [2] Custom        ^| Latest Acrobat is       ^|         (Unstable)
-echo:                           ^| already installed       ^|  
+echo:         [2] Custom        ^| Patches latest already  ^|(Standalone and CC)
+echo:                           ^| installed Acrobat       ^|
 echo:         ________________________________________________________________
 echo:
 echo:         [3] Extras        ^|  Individual Options     ^|   (Advanced Users)
 echo:         [4] Recovery      ^|  Restore Defaults       ^|  (Troubleshooting)
 echo:         [5] Help          ^|  Acropolis Guide        ^|           (Reddit)
+echo:         ________________________________________________________________
 echo:
 echo:         [0] Exit
 echo:     ________________________________________________________________________ 
@@ -274,6 +275,25 @@ pause > nul
 goto MainMenu
 
 
+:DisableCollabSync
+cls
+echo:     ________________________________________________________________________
+echo:
+echo:                           Disabling AdobeCollabSync...
+echo:     ________________________________________________________________________
+echo.
+rem Disable AdobeCollabSync
+if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\AdobeCollabSync.exe.bak" (
+    copy "C:\Program Files\Adobe\Acrobat DC\Acrobat\AdobeCollabSync.exe" "C:\Program Files\Adobe\Acrobat DC\Acrobat\AdobeCollabSync.exe.bak"
+)
+del /f "C:\Program Files\Adobe\Acrobat DC\Acrobat\AdobeCollabSync.exe"
+echo.
+echo AdobeCollabSync disabled.
+echo.
+pause
+goto ExtraSubmenu
+
+
 :RestoreBackup
 cls
 echo:     ________________________________________________________________________
@@ -296,7 +316,7 @@ pause
 goto RestoreDefaultsSubmenu
 
 
-:ReenableBackgroundServices
+:ReenableCrashProcessor
 cls
 echo:     ________________________________________________________________________
 echo:
@@ -309,6 +329,24 @@ if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Adobe Crash Processor.exe.ba
 )
 del /f "C:\Program Files\Adobe\Acrobat DC\Acrobat\Adobe Crash Processor.exe.bak"
 echo Adobe Crash Processor re-enabled.
+echo.
+pause
+goto RestoreDefaultsSubmenu
+
+:ReenableCollabSync
+cls
+echo:     ________________________________________________________________________
+echo:
+echo:                           Re-enabling AdobeCollabSync...
+echo:     ________________________________________________________________________
+echo.
+rem Restore AdobeCollabSync
+if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\AdobeCollabSync.exe.bak" (
+    copy "C:\Program Files\Adobe\Acrobat DC\Acrobat\AdobeCollabSync.exe.bak" "C:\Program Files\Adobe\Acrobat DC\Acrobat\AdobeCollabSync.exe"
+)
+del /f "C:\Program Files\Adobe\Acrobat DC\Acrobat\AdobeCollabSync.exe.bak"
+echo.
+echo AdobeCollabSync re-enabled.
 echo.
 pause
 goto RestoreDefaultsSubmenu
@@ -346,18 +384,20 @@ echo:
 echo:         [1] Create backup of default files
 echo:         [2] Disable Adobe Updater
 echo:         [3] Disable Adobe Crash Processor
+echo:         [4] Disable AdobeCollabSync (Not included, may cause issues!)
 echo:
 echo:         [0] Return to Main Menu
 echo:     ________________________________________________________________________
 echo.
-echo:     Enter a menu option in the Keyboard [1,2,3,0] :
-choice /C:1230 /N
+echo:     Enter a menu option in the Keyboard [1,2,3,4,0] :
+choice /C:12340 /N
 set "extraChoice=%errorlevel%"
 
 if %extraChoice%==1 goto BackupFiles
 if %extraChoice%==2 goto DisableAdobeUpdater
 if %extraChoice%==3 goto DisableBackgroundServices
-if %extraChoice%==4 goto MainMenu
+if %extraChoice%==4 goto DisableCollabSync
+if %extraChoice%==5 goto MainMenu
 
 goto MainMenu
 
@@ -373,18 +413,20 @@ echo.
 echo:         [1] Restore default Acrobat
 echo:         [2] Re-enable Adobe Updater
 echo:         [3] Re-enable Adobe Crash Processor
+echo:         [4] Re-enable AdobeCollabSync (May fix connection issues)
 echo.
 echo:         [0] Return to Main Menu
 echo:     ________________________________________________________________________
 echo.
-echo:     Enter a menu option on the keyboard [1,2,3,0] :
-choice /C:1230 /N
+echo:     Enter a menu option on the keyboard [1,2,3,4,0] :
+choice /C:12340 /N
 set "restoreChoice=%errorlevel%"
 
 if %restoreChoice%==1 goto CloseAdobeProcesses
 if %restoreChoice%==2 goto EnableAdobeUpdater
-if %restoreChoice%==3 goto ReenableBackgroundServices
-if %restoreChoice%==4 goto MainMenu
+if %restoreChoice%==3 goto ReenableCrashProcessor
+if %restoreChoice%==4 goto ReenableCollabSync
+if %restoreChoice%==5 goto MainMenu
 
 goto MainMenu
 
