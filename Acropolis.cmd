@@ -4,6 +4,7 @@ set ver=24.1.9 BETA
 REM Run as admin
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd","/c %~s0 ::","","runas",1)(window.close) && exit
 cd /d "%~dp0"
+taskkill /IM powershell.exe /F
 
 title Acropolis V%ver%
 
