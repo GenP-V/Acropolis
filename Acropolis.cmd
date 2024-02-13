@@ -8,7 +8,7 @@ taskkill /IM powershell.exe /F
 
 title Acropolis V%ver%
 mode 82, 24
-set customAcrobatPath= "C:\Program Files\Adobe\Acrobat DC\Acrobat"
+set customAcrobatPath=C:\Program Files\Adobe\Acrobat DC\Acrobat
 
 :MainMenu
 cls
