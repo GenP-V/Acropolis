@@ -96,6 +96,11 @@ goto downloadPatch
 
 
 :DownloadPatch
+REM Check if Acrobat is installed
+IF NOT EXIST "%customAcrobatPath%\Acrobat.exe" (
+    REM  Acrobat is not installed
+    goto AcrobatNotInstalled
+)
 if not exist "%TEMP%\Acropolis" (
     md "%TEMP%\Acropolis"
 )
@@ -147,6 +152,10 @@ echo:
 echo:                        Creating backup of default files...
 echo:     ________________________________________________________________________
 echo.
+IF NOT EXIST "%customAcrobatPath%\Acrobat.exe" (
+    REM  Acrobat is not installed
+    goto AcrobatNotInstalled
+)
 rem Create backup files
 if not exist "%customAcrobatPath%\acrotray.exe.bak" (
     copy "%customAcrobatPath%\acrotray.exe" "%customAcrobatPath%\acrotray.exe.bak"
@@ -210,6 +219,10 @@ echo:
 echo:                        Disabling Adobe Crash Processor...
 echo:     ________________________________________________________________________
 echo.
+IF NOT EXIST "%customAcrobatPath%\Acrobat.exe" (
+    REM  Acrobat is not installed
+    goto AcrobatNotInstalled
+)
 rem Create backup files and disable Adobe Crash Processor
 if not exist "%customAcrobatPath%\Adobe Crash Processor.exe.bak" (
     copy "%customAcrobatPath%\Adobe Crash Processor.exe" "%customAcrobatPath%\Adobe Crash Processor.exe.bak"
@@ -282,6 +295,10 @@ echo:
 echo:                           Disabling AdobeCollabSync...
 echo:     ________________________________________________________________________
 echo.
+IF NOT EXIST "%customAcrobatPath%\Acrobat.exe" (
+    REM  Acrobat is not installed
+    goto AcrobatNotInstalled
+)
 rem Disable AdobeCollabSync
 if not exist "%customAcrobatPath%\AdobeCollabSync.exe.bak" (
     copy "%customAcrobatPath%\AdobeCollabSync.exe" "%customAcrobatPath%\AdobeCollabSync.exe.bak"
@@ -301,6 +318,10 @@ echo:
 echo:                       Restoring backup of default files...
 echo:     ________________________________________________________________________
 echo.
+IF NOT EXIST "%customAcrobatPath%\Acrobat.exe" (
+    REM  Acrobat is not installed
+    goto AcrobatNotInstalled
+)
 rem Restore backup files
 if exist "%customAcrobatPath%\acrotray.exe.bak" (
     copy "%customAcrobatPath%\acrotray.exe.bak" "%customAcrobatPath%\acrotray.exe"
@@ -323,6 +344,10 @@ echo:
 echo:                        Re-enabling Adobe Crash Processor...
 echo:     ________________________________________________________________________
 echo.
+IF NOT EXIST "%customAcrobatPath%\Acrobat.exe" (
+    REM  Acrobat is not installed
+    goto AcrobatNotInstalled
+)
 rem Restore Adobe Crash Processor
 if exist "%customAcrobatPath%\Adobe Crash Processor.exe.bak" (
     copy "%customAcrobatPath%\Adobe Crash Processor.exe.bak" "%customAcrobatPath%\Adobe Crash Processor.exe"
@@ -340,6 +365,10 @@ echo:
 echo:                           Re-enabling AdobeCollabSync...
 echo:     ________________________________________________________________________
 echo.
+IF NOT EXIST "%customAcrobatPath%\Acrobat.exe" (
+    REM  Acrobat is not installed
+    goto AcrobatNotInstalled
+)
 rem Restore AdobeCollabSync
 if exist "%customAcrobatPath%\AdobeCollabSync.exe.bak" (
     copy "%customAcrobatPath%\AdobeCollabSync.exe.bak" "%customAcrobatPath%\AdobeCollabSync.exe"
@@ -370,6 +399,23 @@ goto RestoreDefaultsSubmenu
 
 :Help
 start "" https://www.reddit.com/r/GenP/comments/qpcnob/friendly_reminder_to_new_folks/
+goto MainMenu
+
+
+:AcrobatNotInstalled
+cls 
+echo:     ________________________________________________________________________
+echo:
+echo:                               Acrobat not installed
+echo:     ________________________________________________________________________
+echo.
+echo:     Acrobat is not installed. Please check your installation path at 
+echo:     [3] Extras ^> [5] Set Custom Acrobat Installation Path
+echo.
+echo:     Otherwise, please install Acrobat and try again.
+echo.
+echo:     Press any key to return to the main menu...
+pause >nul
 goto MainMenu
 
 
