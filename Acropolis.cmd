@@ -332,6 +332,10 @@ if exist "%customAcrobatPath%\Acrobat.dll.bak" (
 if exist "%customAcrobatPath%\acrodistdll.dll.bak" (
     copy "%customAcrobatPath%\acrodistdll.dll.bak" "%customAcrobatPath%\acrodistdll.dll"
 )
+del /f "%customAcrobatPath%\acrotray.exe.bak"
+del /f "%customAcrobatPath%\Acrobat.dll.bak"
+del /f "%customAcrobatPath%\acrodistdll.dll.bak"
+echo.
 echo Backup restored.
 pause
 goto RestoreDefaultsSubmenu
