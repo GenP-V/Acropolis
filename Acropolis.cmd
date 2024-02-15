@@ -1,5 +1,5 @@
 echo off
-set ver=24.1.9 BETA
+set ver=24.2.0 BETA
 
 REM Run as admin
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd","/c %~s0 ::","","runas",1)(window.close) && exit
@@ -7,16 +7,16 @@ cd /d "%~dp0"
 taskkill /IM powershell.exe /F
 
 title Acropolis V%ver%
-mode 82, 24
 set customAcrobatPath=C:\Program Files\Adobe\Acrobat DC\Acrobat
 
 :MainMenu
 cls
 title Acropolis V%ver%
-mode 82, 24
+mode 82, 25
 echo:     ________________________________________________________________________
 echo:
 echo:                               Welcome to Acropolis
+echo:                          developed by -V, GenP Subreddit
 echo:     ________________________________________________________________________ 
 echo:
 echo:         [1] Default       ^| Installs and patches    ^|       (Standalone)
@@ -28,22 +28,24 @@ echo:         ________________________________________________________________
 echo:
 echo:         [3] Extras        ^|  Individual Options     ^|   (Advanced Users)
 echo:         [4] Recovery      ^|  Restore Defaults       ^|  (Troubleshooting)
-echo:         [5] Help          ^|  Acropolis Guide        ^|           (Reddit)
+echo:         [5] Discord       ^|  Support                ^|   (Discord Invite)
+echo:         [6] Help          ^|  Acropolis Guide        ^|           (Reddit)
 echo:         ________________________________________________________________
 echo:
 echo:         [0] Exit
 echo:     ________________________________________________________________________ 
 echo.
-echo:     Enter a menu option on the keyboard [1,2,3,4,5,0] :
-choice /C:123450 /N
+echo:     Enter a menu option on the keyboard [1,2,3,4,5,6,0] :
+choice /C:1234560 /N
 set "userChoice=%errorlevel%"
 
 if %userChoice%==1 goto DownloadInstall
 if %userChoice%==2 goto DownloadPatch
 if %userChoice%==3 goto ExtraSubmenu
 if %userChoice%==4 goto RestoreDefaultsSubmenu
-if %userChoice%==5 goto Help
-if %userChoice%==6 goto ExitScript
+if %userChoice%==5 goto DiscordInvite
+if %userChoice%==6 goto Help
+if %userChoice%==7 goto ExitScript
 
 goto MainMenu
 
@@ -402,7 +404,7 @@ goto RestoreDefaultsSubmenu
 
 
 :Help
-start "" https://www.reddit.com/r/GenP/comments/qpcnob/friendly_reminder_to_new_folks/
+start "" https://www.reddit.com/r/GenP/wiki/index/
 goto MainMenu
 
 
@@ -506,6 +508,12 @@ if %restoreChoice%==4 goto ReenableCollabSync
 if %restoreChoice%==5 goto MainMenu
 
 goto MainMenu
+
+
+:DiscordInvite
+start "" https://discord.com/invite/X9ZuegSM4N
+goto MainMenu
+
 
 :EndScript
 echo Exiting Acropolis...
