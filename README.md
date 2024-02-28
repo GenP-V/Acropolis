@@ -17,8 +17,8 @@
 
 
 ```
-Latest Version: 24.2.0
-Release date: 15-Feb-2024
+Latest Version: 24.2.1
+Release date: 28-Feb-2024
 ```
 
 [![1.1]][1]
