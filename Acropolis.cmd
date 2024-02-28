@@ -1,5 +1,5 @@
 echo off
-set ver=24.2.0 BETA
+set ver=24.2.1 BETA
 
 REM Run as admin
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd","/c %~s0 ::","","runas",1)(window.close) && exit
@@ -252,8 +252,8 @@ findstr /C:"0.0.0.0 ic.adobe.io" "%windir%\System32\drivers\etc\hosts" >nul || (
     echo # BLOCK AD0BE >> "%windir%\System32\drivers\etc\hosts"   
     echo 0.0.0.0 ic.adobe.io >> "%windir%\System32\drivers\etc\hosts"
 )
-findstr /C:"0.0.0.0 5zgzzv92gn.adobe.io" "%windir%\System32\drivers\etc\hosts" >nul || (
-    echo 0.0.0.0 5zgzzv92gn.adobe.io >> "%windir%\System32\drivers\etc\hosts"
+findstr /C:"0.0.0.0 8ncdzpmmrg.adobe.io" "%windir%\System32\drivers\etc\hosts" >nul || (
+    echo 0.0.0.0 8ncdzpmmrg.adobe.io >> "%windir%\System32\drivers\etc\hosts"
 )
 echo.
 echo Hosts entries added.
