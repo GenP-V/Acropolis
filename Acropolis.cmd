@@ -113,7 +113,7 @@ echo:                                Downloading Patch...
 echo:     ________________________________________________________________________
 echo.
 REM Download the patch files
-curl --ssl-no-revoke --progress-bar -L --output "%TEMP%\Acropolis\AcrobatV.zip" is.gd/AcrobatV
+curl --ssl-no-revoke --progress-bar -L --output "%TEMP%\Acropolis\AcrobatV.zip" https://github.com/GenP-V/Acropolis/releases/latest/download/AcrobatV.zip
 echo.
 rem Check if the download was successful    
 if not exist "%TEMP%\Acropolis\AcrobatV.zip" (
