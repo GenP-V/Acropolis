@@ -245,15 +245,13 @@ echo:
 echo:                               Adding hosts entries...
 echo:     ________________________________________________________________________
 echo.
-REM Add hosts entries if they don't already exist
+REM Execute PowerShell command and check output
+C:\Windows\system32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -Command "if(-not([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)){Write-Host 'Script execution failed...';exit};$hostsPath='C:\Windows\System32\drivers\etc\hosts';$webContent=(Invoke-RestMethod -Uri 'http://adobe.isdumb.one' -UseBasicParsing).Split($([char]0x0A))|ForEach-Object{ $_.Trim()};$currentHostsContent=Get-Content -Path $hostsPath;$startMarker='#region Adobe URL Blacklist';$endMarker='#endregion';$blockStart=$currentHostsContent.IndexOf($startMarker);$blockEnd=$currentHostsContent.IndexOf($endMarker);if($blockStart -ne -1 -and $blockEnd -ne -1){$currentHostsContent=$currentHostsContent[0..($blockStart-1)]+$currentHostsContent[($blockEnd+1)..$currentHostsContent.Length]};$newBlock=@($startMarker)+$webContent+$endMarker;$newHostsContent=$currentHostsContent+$newBlock;Set-Content -Path $hostsPath -Value $newHostsContent;Write-Host 'Script execution complete!';exit"
 
-findstr /C:"0.0.0.0 ic.adobe.io" "%windir%\System32\drivers\etc\hosts" >nul || (
-    echo. >> "%windir%\System32\drivers\etc\hosts" 
-    echo # BLOCK AD0BE >> "%windir%\System32\drivers\etc\hosts"   
-    echo 0.0.0.0 ic.adobe.io >> "%windir%\System32\drivers\etc\hosts"
-)
-findstr /C:"0.0.0.0 8ncdzpmmrg.adobe.io" "%windir%\System32\drivers\etc\hosts" >nul || (
-    echo 0.0.0.0 8ncdzpmmrg.adobe.io >> "%windir%\System32\drivers\etc\hosts"
+IF %ERRORLEVEL% EQU 0 (
+    echo Hosts entries added successfully.
+) ELSE (
+    echo Failed to add hosts entries.
 )
 echo.
 echo Hosts entries added.
