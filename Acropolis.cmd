@@ -28,7 +28,7 @@ echo:
 echo:         [0] Exit
 echo:     ________________________________________________________________________ 
 echo.
-echo:     Enter a menu option on the keyboard [1,2,3,4,5,6,0] :
+echo:     Enter a menu option on the keyboard [3,4,5,6,0] :
 choice /C:1234560 /N
 set "userChoice=%errorlevel%"
 
