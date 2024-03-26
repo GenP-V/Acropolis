@@ -2,7 +2,7 @@
 
 <h1 align="center">Acropolis</h1>
 
-<p align="center">The script to install Adobe Acrobat Pro x64</p>
+<p align="center">The script to tweak Adobe Acrobat Pro x64</p>
 <hr>
 
 ## Download / How to use it?
@@ -17,8 +17,8 @@
 
 
 ```
-Latest Version: 24.2.1
-Release date: 28-Feb-2024
+Latest Version: 24.3
+Release date: 19-Mar-2024
 ```
 
 [![1.1]][1]
